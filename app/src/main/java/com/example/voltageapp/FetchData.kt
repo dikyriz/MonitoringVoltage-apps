@@ -19,7 +19,7 @@ fun FetchData () {
 
         Class.forName(JDBC_DRIVER)
         // Membuat koneksi
-        conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/monitoringtegangan", "root", "")
+        conn = DriverManager.getConnection("jdbc:mysql://103.156.128.34:3306/monitoringtegangan?autoReconnect=true&useSSL=false", "root", "")
 
         // Membuat statement
         stmt = conn.createStatement()
