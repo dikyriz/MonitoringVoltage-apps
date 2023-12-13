@@ -1,23 +1,17 @@
 package com.example.voltageapp
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.Message
 import android.util.Log
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import org.json.JSONObject
 import org.json.JSONArray
 import com.android.volley.toolbox.JsonArrayRequest
-import com.example.voltageapp.FetchData
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -82,13 +76,23 @@ class MainActivity : AppCompatActivity() {
 
     fun teks (message: String){
         val valueVoltage = findViewById<TextView>(R.id.valueVoltage);
+        val stateVoltage = findViewById<TextView>(R.id.stateVoltage);
         val checkValue = message.toInt();
+
+
+
         if(checkValue < 190){
-            valueVoltage.setTextColor(ContextCompat.getColor(this,R.color.yellow_soft));
+
+            stateVoltage.setBackgroundResource(R.drawable.round_drop);
+            stateVoltage.text = "DROP";
         } else if (checkValue > 239){
-            valueVoltage.setTextColor(ContextCompat.getColor(this,R.color.red_soft));
+
+            stateVoltage.setBackgroundResource(R.drawable.round_over);
+            stateVoltage.text = "OVER";
         } else {
-            valueVoltage.setTextColor(ContextCompat.getColor(this,R.color.green_soft));
+
+            stateVoltage.setBackgroundResource(R.drawable.round_normal);
+            stateVoltage.text = "NORMAL";
         }
         valueVoltage.text = message
 
